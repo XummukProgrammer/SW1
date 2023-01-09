@@ -132,12 +132,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 31338816663578060, guid: 6d9383d1584f60a44b3a61af96afba02, type: 3}
       propertyPath: _startMiniGameId
-      value: 
+      value: SW_MiniGame
       objectReference: {fileID: 0}
     - target: {fileID: 31338816663578060, guid: 6d9383d1584f60a44b3a61af96afba02, type: 3}
       propertyPath: _miniGameEntryBehaviours.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 31338816663578060, guid: 6d9383d1584f60a44b3a61af96afba02, type: 3}
+      propertyPath: _miniGameEntryBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 7904499447575302365, guid: 66953d4ea1a72334481515128f83c499, type: 3}
     - target: {fileID: 31338816663578061, guid: 6d9383d1584f60a44b3a61af96afba02, type: 3}
       propertyPath: m_Name
       value: Game
