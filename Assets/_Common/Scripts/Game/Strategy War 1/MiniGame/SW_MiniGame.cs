@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class SW_MiniGame : MiniGame
 {
+    private SW_FieldComponent _fieldComponent;
+    private SW_SkinsComponent _skinsComponent;
+
+    public SW_FieldComponent FieldComponent => GetFieldComponent();
+    public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
+
     protected override void OnInit() 
     { 
         base.OnInit();
@@ -102,5 +108,25 @@ public class SW_MiniGame : MiniGame
     protected override bool IsRewardWindowShowed() 
     { 
         return false; 
+    }
+
+    private SW_FieldComponent GetFieldComponent()
+    {
+        if (_fieldComponent == null)
+        {
+            _fieldComponent = Components.GetComponentInChildren<SW_FieldComponent>();
+        }
+
+        return _fieldComponent;
+    }
+
+    private SW_SkinsComponent GetSkinsComponent()
+    {
+        if (_skinsComponent == null)
+        {
+            _skinsComponent = Components.GetComponentInChildren<SW_SkinsComponent>();
+        }
+
+        return _skinsComponent;
     }
 }
