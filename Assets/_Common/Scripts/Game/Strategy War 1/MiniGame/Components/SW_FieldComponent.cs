@@ -3,7 +3,7 @@ using UnityEngine;
 public class SW_FieldComponent : GameComponent<SW_MiniGame>
 {
     [SerializeField] private Vector2Int _cellSize;
-    [SerializeField] private Vector2Int _startPosition;
+    [SerializeField] private Vector2 _startPosition;
 
     private Field _field = new Field();
 

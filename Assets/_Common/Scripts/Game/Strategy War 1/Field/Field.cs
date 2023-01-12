@@ -9,9 +9,9 @@ public class Field
     private List<Cell> _cells = new List<Cell>();
     private int _cellWidth;
     private int _cellHeight;
-    private Vector2Int _startPosition;
+    private Vector2 _startPosition;
 
-    public void Init(EntryPoint entryPoint, Transform container, int cellWidth, int cellHeight, Vector2Int startPosition)
+    public void Init(EntryPoint entryPoint, Transform container, int cellWidth, int cellHeight, Vector2 startPosition)
     {
         _entryPoint = entryPoint;
         _container = container;
