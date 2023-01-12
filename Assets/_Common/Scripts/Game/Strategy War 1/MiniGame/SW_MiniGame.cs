@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SW_MiniGame : MiniGame
 {
+    public event System.Action<Cell> CellClicked;
+
     private SW_FieldComponent _fieldComponent;
     private SW_SkinsComponent _skinsComponent;
 
@@ -128,5 +130,10 @@ public class SW_MiniGame : MiniGame
         }
 
         return _skinsComponent;
+    }
+
+    public void OnPlayerCellClicked(Cell cell)
+    {
+        CellClicked?.Invoke(cell);
     }
 }
