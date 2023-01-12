@@ -16,4 +16,10 @@ public class CellBehaviour : MonoBehaviour
         float targetY = startPosition.y - y * height - height / 2;
         transform.position = new Vector3(targetX, targetY, transform.position.z);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
+    }
 }
