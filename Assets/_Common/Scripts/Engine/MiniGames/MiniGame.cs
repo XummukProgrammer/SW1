@@ -63,6 +63,7 @@ public class MiniGame
 
     public void Start()
     {
+        OnStart();
         _state = MiniGameState.LoadResources;
         OnLoadResources();
     }
@@ -150,4 +151,9 @@ public class MiniGame
     protected virtual bool IsWinWindowShowed() { return false; }
     protected virtual bool IsLoseWindowShowed() { return false; }
     protected virtual bool IsRewardWindowShowed() { return false; }
+
+    private void OnStart()
+    {
+        Components.OnStart();
+    }
 }

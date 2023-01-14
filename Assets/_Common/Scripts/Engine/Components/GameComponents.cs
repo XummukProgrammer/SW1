@@ -33,6 +33,14 @@ public class GameComponents : MonoBehaviour
         }
     }
 
+    public void OnStart()
+    {
+        foreach (var component in _components)
+        {
+            component.OnStart();
+        }
+    }
+
     public void OnUpdate()
     {
         foreach (var component in _components)

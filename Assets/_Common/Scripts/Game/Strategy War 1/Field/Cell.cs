@@ -16,6 +16,7 @@ public class Cell
     public int Width => _x + (int)_size.x;
     public int Height => _y + (int)_size.y;
     public CellBehaviour Behaviour => _behaviour;
+    protected EntryPoint EntryPoint => _entryPoint;
 
     public void Init(EntryPoint entryPoint, Transform container, CellBehaviour prefab, int x, int y, int layer, int width, int height, Vector2 startPosition)
     {
@@ -46,4 +47,5 @@ public class Cell
 
     protected virtual void OnInit() { }
     protected virtual void OnRemove() { }
+    public virtual void OnStart() { }
 }

@@ -7,6 +7,7 @@ public class BaseGameComponent : MonoBehaviour
     public virtual void Deinit() { }
 
     public virtual void OnUpdate() { }
+    public virtual void OnStart() { }
 }
 
 public class GameComponent<T> : BaseGameComponent where T : MiniGame

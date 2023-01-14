@@ -6,6 +6,8 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
 
     private Field _field = new Field();
 
+    public Field Field => _field;
+
     protected override void OnInit()
     {
         base.OnInit();
@@ -26,6 +28,8 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
 
             CreateCell<Cell>("Player", 1, 1, 0, true);
 
+            CreateCell<SW_BuildingCell>("Building", 3, 3, 0, true);
+
             Debug.Log("[SW] Success init field!");
         }
         else
@@ -39,6 +43,13 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
         base.OnDeinit();
 
         _field.Deinit();
+    }
+
+    public override void OnStart()
+    {
+        base.OnStart();
+
+        _field.OnStart();
     }
 
     public bool CreateCell<T>(string skinId, int x, int y, int layer, bool isForce) where T : Cell

@@ -30,6 +30,14 @@ public class Field
         _cells.Clear();
     }
 
+    public void OnStart()
+    {
+        foreach (var cell in _cells)
+        {
+            cell.OnStart();
+        }
+    }
+
     public Cell CreateCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
     {
         if (!isForce && HasCellByRect(x, y, layer))
@@ -91,5 +99,20 @@ public class Field
         }
 
         return null;
+    }
+
+    public List<T> GetCellsByType<T>() where T : Cell
+    {
+        List<T> cells = new List<T>();
+
+        foreach (var cell in _cells)
+        {
+            if (cell is T)
+            {
+                cells.Add(cell as T);
+            }
+        }
+
+        return cells;
     }
 }

@@ -24,7 +24,7 @@ public class CellBehaviour : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!_isDrawGizmos)
+        if (!_isDrawGizmos || !_settings)
         {
             return;
         }
