@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// TODO: use default HUD controller?
 public class HUDComponent<TController, TMiniGame> : GameComponent<TMiniGame> 
     where TMiniGame : MiniGame 
     where TController : HUD

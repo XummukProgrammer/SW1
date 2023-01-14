@@ -8,10 +8,12 @@ public class SW_MiniGame : MiniGame
     private SW_FieldComponent _fieldComponent;
     private SW_SkinsComponent _skinsComponent;
     private SW_BuildingComponent _buildingComponent;
+    private SW_PeopleComponent _peopleComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
     public SW_BuildingComponent BuildingComponent => GetBuildingComponent();
+    public SW_PeopleComponent PeopleComponent => GetPeopleComponent();
 
     protected override void OnInit() 
     { 
@@ -143,6 +145,16 @@ public class SW_MiniGame : MiniGame
         }
 
         return _buildingComponent;
+    }
+
+    private SW_PeopleComponent GetPeopleComponent()
+    {
+        if (_peopleComponent == null)
+        {
+            _peopleComponent = Components.GetComponentInChildren<SW_PeopleComponent>();
+        }
+
+        return _peopleComponent;
     }
 
     public void OnPlayerCellClicked(Cell cell)
