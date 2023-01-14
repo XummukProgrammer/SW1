@@ -17,9 +17,9 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
             _field.Init(MiniGame.EntryPoint, container.transform, _cellSize.x, _cellSize.y, _startPosition);
 
             // Debug
-            for (int y = 0; y < 5; ++y)
+            for (int y = 0; y < 20; ++y)
             {
-                for (int x = 0; x < 5; ++x)
+                for (int x = 0; x < 20; ++x)
                 {
                     _field.CreateAndAddCell<Cell>(MiniGame.SkinsComponent.GetCellSkin("Ground").Prefab, x, y);
                 }

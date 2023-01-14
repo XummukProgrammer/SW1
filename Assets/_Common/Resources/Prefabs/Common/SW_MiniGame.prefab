@@ -140,6 +140,10 @@ MonoBehaviour:
   _cellSkins:
   - _id: Ground
     _prefab: {fileID: 1121814575796977046, guid: 5d9f1ed6d0712cf409ee9aad041a63fa, type: 3}
+  - _id: Player
+    _prefab: {fileID: 1121814575796977046, guid: 6639a53c31b5a944489b60cd296cbe48, type: 3}
+  - _id: Enemy
+    _prefab: {fileID: 1121814575796977046, guid: 2651479964cd00a479cf02e9a3db13b7, type: 3}
 --- !u!1 &9032150613399744199
 GameObject:
   m_ObjectHideFlags: 0

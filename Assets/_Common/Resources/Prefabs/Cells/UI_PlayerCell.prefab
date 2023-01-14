@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1121814575796977046}
   - component: {fileID: 3819250902016434916}
   m_Layer: 0
-  m_Name: UI_GroundCell
+  m_Name: UI_PlayerCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.38937345, g: 0.6603774, b: 0.38988712, a: 1}
+  m_Color: {r: 0.3882353, g: 0.48870808, b: 0.65882355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
