@@ -30,16 +30,27 @@ public class Field
         _cells.Clear();
     }
 
-    public Cell CreateCell<T>(CellBehaviour prefab, int x, int y) where T : Cell
+    public Cell CreateCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
     {
+        if (!isForce && HasCellByRect(x, y, layer))
+        {
+            return null;
+        }
+
         var cell = Activator.CreateInstance<T>();
-        cell.Init(_entryPoint, _container, prefab, x, y, _cellWidth, _cellHeight, _startPosition);
+        cell.Init(_entryPoint, _container, prefab, x, y, layer, _cellWidth, _cellHeight, _startPosition);
         return cell;
     }
 
-    public Cell CreateAndAddCell<T>(CellBehaviour prefab, int x, int y) where T : Cell
+    public Cell CreateAndAddCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
     {
-        var cell = CreateCell<T>(prefab, x, y);
+        var cell = CreateCell<T>(prefab, x, y, layer, isForce);
+
+        if (cell == null)
+        {
+            return null;
+        }
+
         AddCell(cell);
         return cell;
     }
@@ -60,12 +71,21 @@ public class Field
         return _cells.Find((Cell _cell) => _cell == cell) != null;
     }
 
-    public Cell GetCellByPosition(int x, int y)
+    public bool HasCellByRect(int x, int y, int layer)
+    {
+        return GetCellByRect(x, y, layer) != null;
+    }
+
+    public Cell GetCellByRect(int x, int y, int layer)
     {
         foreach (var cell in _cells)
         {
-            if (cell.X == x && cell.Y == y)
+            if (x >= cell.X && x < cell.Width && y >= cell.Y && y < cell.Height)
             {
+                if (layer != -1 && cell.Layer != layer)
+                {
+                    return null;
+                }
                 return cell;
             }
         }

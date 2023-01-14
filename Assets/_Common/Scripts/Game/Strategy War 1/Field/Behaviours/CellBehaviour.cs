@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class CellBehaviour : MonoBehaviour
 {
+    [SerializeField] private Vector2 _size;
+    [SerializeField] private SW_Settings _settings;
+    [SerializeField] private bool _isDrawGizmos = true;
+
     private Cell _cell;
 
     public Cell Cell => _cell;
+    public Vector2 Size => _size;
 
     public void Init(Cell cell, string name, float x, float y, float width, float height, Vector2 startPosition)
     {
@@ -19,7 +24,21 @@ public class CellBehaviour : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!_isDrawGizmos)
+        {
+            return;
+        }
+
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, transform.localScale);
+
+        float x = transform.position.x - transform.localScale.x / 2;
+        float y = transform.position.y + transform.localScale.y / 2;
+        float width = _settings.CellSize.x * _size.x;
+        float height = _settings.CellSize.y * _size.y;
+
+        Gizmos.DrawLine(new Vector3(x, y, transform.position.z), new Vector3(x + width, y, transform.position.z));
+        Gizmos.DrawLine(new Vector3(x, y, transform.position.z), new Vector3(x, y - height, transform.position.z));
+        Gizmos.DrawLine(new Vector3(x, y - height, transform.position.z), new Vector3(x + width, y - height, transform.position.z));
+        Gizmos.DrawLine(new Vector3(x + width, y, transform.position.z), new Vector3(x + width, y - height, transform.position.z));
     }
 }

@@ -4,22 +4,30 @@ public class Cell
 {
     private int _x;
     private int _y;
+    private int _layer;
+    private Vector2 _size;
     private EntryPoint _entryPoint;
 
     private CellBehaviour _behaviour;
 
     public int X => _x;
     public int Y => _y;
+    public int Layer => _layer;
+    public int Width => _x + (int)_size.x;
+    public int Height => _y + (int)_size.y;
     public CellBehaviour Behaviour => _behaviour;
 
-    public void Init(EntryPoint entryPoint, Transform container, CellBehaviour prefab, int x, int y, int width, int height, Vector2 startPosition)
+    public void Init(EntryPoint entryPoint, Transform container, CellBehaviour prefab, int x, int y, int layer, int width, int height, Vector2 startPosition)
     {
         _entryPoint = entryPoint;
         _x = x;
         _y = y;
+        _layer = layer;
 
         _behaviour = GameObject.Instantiate(prefab, container);
         _behaviour.Init(this, $"Cell_{x}x{y}", x, y, width, height, startPosition);
+
+        _size = _behaviour.Size;
 
         OnInit();
     }
