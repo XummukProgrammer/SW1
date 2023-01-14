@@ -3,6 +3,7 @@ using UnityEngine;
 public class SW_MiniGame : MiniGame
 {
     public event System.Action<Cell> CellClicked;
+    public event System.Action HourChanged;
 
     private SW_FieldComponent _fieldComponent;
     private SW_SkinsComponent _skinsComponent;
@@ -147,5 +148,10 @@ public class SW_MiniGame : MiniGame
     public void OnPlayerCellClicked(Cell cell)
     {
         CellClicked?.Invoke(cell);
+    }
+
+    public void OnHourChanged()
+    {
+        HourChanged?.Invoke();
     }
 }
