@@ -159,7 +159,16 @@ public class SW_MiniGame : MiniGame
 
     public void OnPlayerCellClicked(Cell cell)
     {
+        cell.OnClicked();
         CellClicked?.Invoke(cell);
+    }
+
+    public void OnCellShowContextMenu(Cell cell)
+    {
+        if (cell.CanShowContextMenu())
+        {
+            cell.OnShowContextMenu();
+        }
     }
 
     public void OnHourChanged()

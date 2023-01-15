@@ -29,5 +29,7 @@ public class SW_BuildingCell : Cell
         _miniGame.HourChanged -= OnHourChanged;
     }
 
+    public override bool CanShowContextMenu() { return true; }
+
     protected virtual void OnHourChanged() { }
 }

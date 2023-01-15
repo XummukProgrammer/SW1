@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SW_PlayerComponent : GameComponent<SW_MiniGame>
 {
@@ -9,6 +8,10 @@ public class SW_PlayerComponent : GameComponent<SW_MiniGame>
         {
             OnMouseLeftClicked();
         }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            OnMouseRightClicked();
+        }
     }
 
     private void OnMouseLeftClicked()
@@ -16,7 +19,32 @@ public class SW_PlayerComponent : GameComponent<SW_MiniGame>
         TryClickToCell();
     }
 
+    private void OnMouseRightClicked()
+    {
+        TryShowContextMenu();
+    }
+
     private void TryClickToCell()
+    {
+        var cell = GetCellInMouseArea();
+
+        if (cell != null)
+        {
+            MiniGame.OnPlayerCellClicked(cell);
+        }
+    }
+
+    private void TryShowContextMenu()
+    {
+        var cell = GetCellInMouseArea();
+
+        if (cell != null)
+        {
+            MiniGame.OnCellShowContextMenu(cell);
+        }
+    }
+
+    private Cell GetCellInMouseArea()
     {
         RaycastHit2D hit = Physics2D.Raycast(MiniGame.EntryPoint.GetMousePosition(), Vector2.zero);
 
@@ -24,8 +52,10 @@ public class SW_PlayerComponent : GameComponent<SW_MiniGame>
         {
             if (hit.collider.TryGetComponent(out CellBehaviour cellBehaviour))
             {
-                MiniGame.OnPlayerCellClicked(cellBehaviour.Cell);
+                return cellBehaviour.Cell;
             }
         }
+
+        return null;
     }
 }
