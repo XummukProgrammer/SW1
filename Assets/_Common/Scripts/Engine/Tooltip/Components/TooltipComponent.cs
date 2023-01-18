@@ -10,7 +10,7 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
 
     public void Create()
     {
-        _tooltip = MiniGame.EntryPoint.TooltipManager.CreateTooltip(_prefab, GetTransformByLocator(), _isAutoShow);
+        _tooltip = MiniGame.EntryPoint.TooltipManager.CreateTooltip(_prefab, GetTarget(), _isAutoShow);
         OnCreate();
     }
 
@@ -33,8 +33,13 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
         OnHide();
     }
 
-    private Transform GetTransformByLocator()
+    private Transform GetTargetWithLocator()
     {
+        var locator = MiniGame.EntryPoint.LocatorManager.GetLocatorByName(_targetLocator);
+        if (locator != null)
+        {
+            return locator.Behaviour.transform;
+        }
         return null;
     }
 
@@ -42,4 +47,6 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
     protected virtual void OnRemove() { }
     protected virtual void OnShow() { }
     protected virtual void OnHide() { }
+
+    protected private Transform GetTarget() { return GetTargetWithLocator(); }
 }
