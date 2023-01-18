@@ -20,6 +20,8 @@ public class Launcher : MonoBehaviour
 
     private EntryPoint _entryPoint = new EntryPoint();
 
+    public EntryPoint EntryPoint => _entryPoint;
+
     private void OnEnable()
     {
         _entryPoint.Init(_camera,

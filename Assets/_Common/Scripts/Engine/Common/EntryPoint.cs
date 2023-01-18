@@ -11,6 +11,7 @@ public class EntryPoint
     private SoundsManager _soundsManager = new SoundsManager();
     private EffectsManager _effectsManager = new EffectsManager();
     private TooltipManager _tooltipManager = new TooltipManager();
+    private LocatorManager _locatorManager = new LocatorManager();
 
     private BaseMiniGameEntryBehaviour[] _miniGameEntryBehaviours;
     private string _startMiniGameId;
@@ -26,6 +27,7 @@ public class EntryPoint
     public SoundsManager SoundsManager => _soundsManager;
     public EffectsManager EffectsManager => _effectsManager;
     public TooltipManager TooltipManager => _tooltipManager;
+    public LocatorManager LocatorManager => _locatorManager;
     public bool IsDisabled => _isDisabled;
 
     public void Init(Camera camera,
