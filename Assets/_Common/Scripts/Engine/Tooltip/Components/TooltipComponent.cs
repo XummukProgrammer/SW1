@@ -8,6 +8,8 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
 
     private Tooltip _tooltip;
 
+    public Tooltip Tooltip => _tooltip;
+
     public void Create()
     {
         _tooltip = MiniGame.EntryPoint.TooltipManager.CreateTooltip(_prefab, GetTarget(), _isAutoShow);
@@ -48,5 +50,5 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
     protected virtual void OnShow() { }
     protected virtual void OnHide() { }
 
-    protected private Transform GetTarget() { return GetTargetWithLocator(); }
+    protected virtual private Transform GetTarget() { return GetTargetWithLocator(); }
 }

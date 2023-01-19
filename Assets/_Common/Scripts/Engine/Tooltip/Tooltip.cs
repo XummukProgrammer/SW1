@@ -8,6 +8,8 @@ public class Tooltip
 
     public EntryPoint EntryPoint => _entryPoint;
 
+    public TooltipBehaviour Behaviour => _behaviour;
+
     public void Create(EntryPoint entryPoint, TooltipBehaviour prefab, Transform container, Transform target, bool isAutoShow)
     {
         _entryPoint = entryPoint;

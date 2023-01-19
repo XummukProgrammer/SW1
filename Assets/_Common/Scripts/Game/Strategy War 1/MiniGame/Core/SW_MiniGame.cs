@@ -9,10 +9,12 @@ public class SW_MiniGame : MiniGame
     private SW_SkinsComponent _skinsComponent;
     private SW_BuildingComponent _buildingComponent;
     private SW_PeopleComponent _peopleComponent;
+    private SW_BuildingContextMenuComponent _buildingContextMenuComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
     public SW_BuildingComponent BuildingComponent => GetBuildingComponent();
+    public SW_BuildingContextMenuComponent BuildingContextMenuComponent => GetBuildingContextMenuComponent();
     public SW_PeopleComponent PeopleComponent => GetPeopleComponent();
 
     protected override void OnInit() 
@@ -147,6 +149,16 @@ public class SW_MiniGame : MiniGame
         return _buildingComponent;
     }
 
+    private SW_BuildingContextMenuComponent GetBuildingContextMenuComponent()
+    {
+        if (_buildingContextMenuComponent == null)
+        {
+            _buildingContextMenuComponent = Components.GetComponentInChildren<SW_BuildingContextMenuComponent>();
+        }
+
+        return _buildingContextMenuComponent;
+    }
+
     private SW_PeopleComponent GetPeopleComponent()
     {
         if (_peopleComponent == null)
@@ -168,6 +180,11 @@ public class SW_MiniGame : MiniGame
         if (cell.CanShowContextMenu())
         {
             cell.OnShowContextMenu();
+
+            var buildingContextMenuComponent = GetBuildingContextMenuComponent();
+            buildingContextMenuComponent.SetTargetCell(cell);
+            buildingContextMenuComponent.Create();
+            buildingContextMenuComponent.Show();
         }
     }
 
