@@ -3,6 +3,9 @@ using UnityEngine;
 public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
 {
     private Cell _targetCell;
+    private bool _isCreated = false;
+
+    public bool IsCreated => _isCreated;
 
     public void SetTargetCell(Cell targetCell) 
     { 
@@ -15,9 +18,12 @@ public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
     {
         base.OnCreate();
 
+        _isCreated = true;
+
         if (Tooltip.Behaviour.TryGetComponent(out SW_BuildingContextMenuBehaviour behaviour))
         {
-            behaviour.RemoveButtonClickedDelegate = OnRemoveButtonClicked;
+            behaviour.RemoveButtonClickedDelegate += OnRemoveButtonClicked;
+            behaviour.CloseButtonClickedDelegate += OnCloseButtonClicked;
         }
     }
 
@@ -25,9 +31,12 @@ public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
     {
         base.OnRemove();
 
+        _isCreated = false;
+
         if (Tooltip.Behaviour.TryGetComponent(out SW_BuildingContextMenuBehaviour behaviour))
         {
             behaviour.RemoveButtonClickedDelegate -= OnRemoveButtonClicked;
+            behaviour.CloseButtonClickedDelegate -= OnCloseButtonClicked;
         }
     }
 
@@ -35,5 +44,12 @@ public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
     {
         MiniGame.FieldComponent.Field.RemoveCell(_targetCell);
         _targetCell = null;
+
+        OnCloseButtonClicked();
+    }
+
+    private void OnCloseButtonClicked()
+    {
+        Remove();
     }
 }

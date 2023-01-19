@@ -18,9 +18,9 @@ public class TooltipComponent<T> : GameComponent<T> where T : MiniGame
 
     public void Remove()
     {
-        _tooltip.Remove();
-        _tooltip = null;
         OnRemove();
+        MiniGame.EntryPoint.TooltipManager.RemoveTooltip(_tooltip);
+        _tooltip = null;
     }
 
     public void Show()

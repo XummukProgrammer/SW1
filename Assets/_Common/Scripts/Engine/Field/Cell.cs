@@ -49,6 +49,5 @@ public class Cell
     protected virtual void OnRemove() { }
     public virtual void OnStart() { }
     public virtual void OnClicked() { }
-    public virtual bool CanShowContextMenu() { return false; }
     public virtual void OnShowContextMenu() { }
 }

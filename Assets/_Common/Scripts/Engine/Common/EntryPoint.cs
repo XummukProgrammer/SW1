@@ -75,7 +75,17 @@ public class EntryPoint
 
     public Vector3 GetMousePosition()
     {
-        return _camera.ScreenToWorldPoint(Input.mousePosition);
+        return ScreenToWorldPosition(Input.mousePosition);
+    }
+
+    public Vector3 WorldToScreenPosition(Vector3 worldPosition)
+    {
+        return _camera.WorldToScreenPoint(worldPosition);
+    }
+
+    public Vector3 ScreenToWorldPosition(Vector3 screenPosition)
+    {
+        return _camera.ScreenToWorldPoint(screenPosition);
     }
 
     private void StartMiniGame(string miniGameId)

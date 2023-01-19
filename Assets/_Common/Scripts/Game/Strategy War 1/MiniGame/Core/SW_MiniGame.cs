@@ -177,15 +177,7 @@ public class SW_MiniGame : MiniGame
 
     public void OnCellShowContextMenu(Cell cell)
     {
-        if (cell.CanShowContextMenu())
-        {
-            cell.OnShowContextMenu();
-
-            var buildingContextMenuComponent = GetBuildingContextMenuComponent();
-            buildingContextMenuComponent.SetTargetCell(cell);
-            buildingContextMenuComponent.Create();
-            buildingContextMenuComponent.Show();
-        }
+        cell.OnShowContextMenu();
     }
 
     public void OnHourChanged()
