@@ -8,10 +8,14 @@ public class SW_Zombie
     private SW_ZombieBehaviour _prefab;
     private SW_ZombieMovePolicy _movePolicy;
     private Transform _moveTarget;
+    private SW_ZombieAttackPolicy _attackPolicy;
 
-    protected SW_MiniGame MiniGame => _miniGame;
+    public SW_MiniGame MiniGame => _miniGame;
     public SW_ZombieBehaviour Behaviour => _behaviour;
-    
+
+    public SW_ZombieMovePolicy MovePolicy => _movePolicy;
+    public SW_ZombieAttackPolicy AttackPolicy => _attackPolicy;
+
     public void SetMiniGame(SW_MiniGame miniGame)
     {
         _miniGame = miniGame;
@@ -30,7 +34,10 @@ public class SW_Zombie
     public void Init()
     {
         _movePolicy = CreateMovePolicy();
-        _movePolicy.Init(_miniGame, this);
+        _movePolicy.Init(this);
+
+        _attackPolicy = CreateAttackPolicy();
+        _attackPolicy.Init(this);
 
         OnInit();
     }
@@ -56,6 +63,10 @@ public class SW_Zombie
             if (!_movePolicy.IsStop())
             {
                 MoveToObject();
+            }
+            else
+            {
+                AttackObject();
             }
         }
 
@@ -92,8 +103,15 @@ public class SW_Zombie
             return;
         }
 
-        _movePolicy.FindObject();
-        _moveTarget = _movePolicy.GetObject();
+        if (_movePolicy.TryFindObject())
+        {
+            _moveTarget = _movePolicy.GetObject();
+        }
+        else
+        {
+            _movePolicy = null;
+            _moveTarget = null;
+        }
     }
 
     private void MoveToObject()
@@ -110,6 +128,24 @@ public class SW_Zombie
         }
     }
 
+    private void AttackObject()
+    {
+        if (_attackPolicy == null)
+        {
+            return;
+        }
+
+        if (_attackPolicy.CanAttack())
+        {
+            _attackPolicy.Attack();
+
+            if (_attackPolicy.IsTargetRemoved())
+            {
+                OnInitMoveObject();
+            }
+        }
+    }
+
     protected virtual void OnInit() { }
     protected virtual void OnDeinit() { }
     protected virtual void OnUpdate() { }
@@ -117,4 +153,5 @@ public class SW_Zombie
     protected virtual void OnRemove() { }
 
     protected virtual SW_ZombieMovePolicy CreateMovePolicy() { return new SW_ZombieMoveToAllBuildingPolicy(); }
+    protected virtual SW_ZombieAttackPolicy CreateAttackPolicy() { return new SW_ZombieAttackBuildingPolicy(); }
 }

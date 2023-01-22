@@ -4,17 +4,20 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
 {
     private SW_BuildingCell _targetCell;
 
-    public override void FindObject()
+    public override bool TryFindObject()
     {
-        base.FindObject();
+        base.TryFindObject();
 
-        var cells = MiniGame.BuildingComponent.GetCells();
+        var cells = Zombie.MiniGame.BuildingComponent.GetCells();
         int count = cells.Count;
 
         if (count > 0)
         {
             _targetCell = cells[Random.Range(0, count - 1)];
+            return true;
         }
+
+        return false;
     }
 
     public override bool IsChangeObject() 
@@ -37,7 +40,6 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
 
         if (IsRectsTouched(zombiePosition, zombieScale, cellPosition, cellScale))
         {
-            Debug.Log("Stop!!!");
             return true;
         }
 

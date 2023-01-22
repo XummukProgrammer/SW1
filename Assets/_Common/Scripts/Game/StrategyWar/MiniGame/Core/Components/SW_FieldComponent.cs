@@ -29,6 +29,9 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
             CreateCell<Cell>("Player", 1, 1, 0, true);
 
             CreateCell<SW_PeopleBuildingCell>("Building", 3, 3, 0, true);
+            CreateCell<SW_PeopleBuildingCell>("Building", 4, 3, 0, true);
+            CreateCell<SW_PeopleBuildingCell>("Building", 5, 3, 0, true);
+            CreateCell<SW_PeopleBuildingCell>("Building", 6, 3, 0, true);
 
             Debug.Log("[SW] Success init field!");
         }
