@@ -81,6 +81,7 @@ Transform:
   - {fileID: 6221749075157716335}
   - {fileID: 234980593733072698}
   - {fileID: 8249314416891414024}
+  - {fileID: 6237254173669311464}
   m_Father: {fileID: 6350684540680798277}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,6 +188,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components: {fileID: 919350126652641943}
+--- !u!1 &4771281247556716704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6237254173669311464}
+  - component: {fileID: 602254145130134059}
+  m_Layer: 0
+  m_Name: Zombies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6237254173669311464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771281247556716704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4005560118494850760}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602254145130134059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771281247556716704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7588d6013e9e2dd41a0b5fc01abfcf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6212564064242479474
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +423,9 @@ MonoBehaviour:
     _prefab: {fileID: 1121814575796977046, guid: 2651479964cd00a479cf02e9a3db13b7, type: 3}
   - _id: Building
     _prefab: {fileID: 7449791035315155836, guid: b494ea3f4a239d9408bfc85894b827c5, type: 3}
+  _zombieSkins:
+  - _id: Zombie
+    _prefab: {fileID: 4921441367035672836, guid: 489de7ebe510f92419c9edd0911fae68, type: 3}
 --- !u!1 &9032150613399744199
 GameObject:
   m_ObjectHideFlags: 0
