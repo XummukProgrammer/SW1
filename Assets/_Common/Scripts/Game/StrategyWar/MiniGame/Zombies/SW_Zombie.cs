@@ -10,6 +10,7 @@ public class SW_Zombie
     private Transform _moveTarget;
 
     protected SW_MiniGame MiniGame => _miniGame;
+    public SW_ZombieBehaviour Behaviour => _behaviour;
     
     public void SetMiniGame(SW_MiniGame miniGame)
     {
@@ -29,7 +30,7 @@ public class SW_Zombie
     public void Init()
     {
         _movePolicy = CreateMovePolicy();
-        _movePolicy.Init(_miniGame);
+        _movePolicy.Init(_miniGame, this);
 
         OnInit();
     }
@@ -43,9 +44,6 @@ public class SW_Zombie
     {
         if (_movePolicy != null)
         {
-            var position = _behaviour.transform.position;
-            _movePolicy.SetPosition(position.x, position.y);
-
             if (_moveTarget == null)
             {
                 OnInitMoveObject();
@@ -55,7 +53,10 @@ public class SW_Zombie
                 OnInitMoveObject();
             }
 
-            MoveToObject();
+            if (!_movePolicy.IsStop())
+            {
+                MoveToObject();
+            }
         }
 
         OnUpdate();
