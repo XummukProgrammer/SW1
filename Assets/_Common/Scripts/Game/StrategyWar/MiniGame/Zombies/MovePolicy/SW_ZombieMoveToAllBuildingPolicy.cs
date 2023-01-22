@@ -13,7 +13,19 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
 
         if (count > 0)
         {
-            _targetCell = cells[Random.Range(0, count - 1)];
+            float minDistance = Vector3.Distance(Zombie.Behaviour.transform.position, cells[0].Behaviour.transform.position);
+            _targetCell = cells[0];
+
+            foreach (var cell in cells)
+            {
+                float distance = Vector3.Distance(Zombie.Behaviour.transform.position, cell.Behaviour.transform.position);
+                if (minDistance > distance)
+                {
+                    minDistance = distance;
+                    _targetCell = cell;
+                }
+            }
+
             return true;
         }
 
