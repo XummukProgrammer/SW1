@@ -4,7 +4,7 @@ public class SW_BuildingCell : Cell
 {
     private SW_MiniGame _miniGame;
 
-    protected SW_MiniGame MiniGame => _miniGame;
+    public SW_MiniGame MiniGame => _miniGame;
 
     public override void OnStart()
     {

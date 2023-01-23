@@ -152,4 +152,19 @@ public class SW_ZombiesManager
 
         return null;
     }
+
+    public List<SW_Zombie> GetZombiesWithDistance(Vector3 position, float maxDistance)
+    {
+        List<SW_Zombie> zombies = new List<SW_Zombie>();
+
+        foreach (var zombie in _zombies)
+        {
+            if (Vector3.Distance(position, zombie.Behaviour.transform.position) <= maxDistance)
+            {
+                zombies.Add(zombie);
+            }
+        }
+
+        return zombies;
+    }
 }
