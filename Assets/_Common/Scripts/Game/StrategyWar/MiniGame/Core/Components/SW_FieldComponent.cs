@@ -33,6 +33,9 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
             CreateCell<SW_PeopleBuildingCell>("Building", 5, 3, 0, true);
             CreateCell<SW_PeopleBuildingCell>("Building", 6, 3, 0, true);
 
+            var turrelCell = CreateCell<SW_TurrelBuildingCell>("Turrel", 5, 5, 0, true);
+            turrelCell.SetPolicy(new SW_TurrelBuildingVisionPolicy(), new SW_TurrelBuildingAttackPolicy());
+
             Debug.Log("[SW] Success init field!");
         }
         else
@@ -55,21 +58,28 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
         _field.OnStart();
     }
 
-    public bool CreateCell<T>(string skinId, int x, int y, int layer, bool isForce) where T : Cell
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        _field.OnUpdate();
+    }
+
+    public T CreateCell<T>(string skinId, int x, int y, int layer, bool isForce) where T : Cell
     {
         var skin = MiniGame.SkinsComponent.GetCellSkin(skinId);
         if (skin == null)
         {
             Debug.Log($"[SW] No found skin: {skinId}");
-            return false;
+            return null;
         }
 
         if (skin.Prefab == null)
         {
             Debug.Log($"[SW] No found prefab for skin: {skinId}");
-            return false;
+            return null;
         }
 
-        return _field.CreateAndAddCell<T>(skin.Prefab, x, y, layer, isForce) != null;
+        return _field.CreateAndAddCell<T>(skin.Prefab, x, y, layer, isForce);
     }
 }

@@ -38,7 +38,15 @@ public class Field
         }
     }
 
-    public Cell CreateCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
+    public void OnUpdate()
+    {
+        foreach (var cell in _cells)
+        {
+            cell.OnUpdate();
+        }
+    }
+
+    public T CreateCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
     {
         if (!isForce && HasCellByRect(x, y, layer))
         {
@@ -50,7 +58,7 @@ public class Field
         return cell;
     }
 
-    public Cell CreateAndAddCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
+    public T CreateAndAddCell<T>(CellBehaviour prefab, int x, int y, int layer, bool isForce) where T : Cell
     {
         var cell = CreateCell<T>(prefab, x, y, layer, isForce);
 

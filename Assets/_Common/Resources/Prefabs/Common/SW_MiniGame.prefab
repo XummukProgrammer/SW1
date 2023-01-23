@@ -437,6 +437,8 @@ MonoBehaviour:
     _prefab: {fileID: 1121814575796977046, guid: 2651479964cd00a479cf02e9a3db13b7, type: 3}
   - _id: Building
     _prefab: {fileID: 7449791035315155836, guid: b494ea3f4a239d9408bfc85894b827c5, type: 3}
+  - _id: Turrel
+    _prefab: {fileID: 6568398051610217682, guid: c3009b6770c0bfd4b9b67dbb8c6f8f13, type: 3}
   _zombieSkins:
   - _id: Zombie
     _prefab: {fileID: 4921441367035672836, guid: 489de7ebe510f92419c9edd0911fae68, type: 3}

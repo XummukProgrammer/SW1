@@ -53,4 +53,5 @@ public class Cell
     public virtual void OnStart() { }
     public virtual void OnClicked() { }
     public virtual void OnShowContextMenu() { }
+    public virtual void OnUpdate() { }
 }
