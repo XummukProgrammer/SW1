@@ -232,6 +232,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7588d6013e9e2dd41a0b5fc01abfcf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waves:
+    _waves:
+    - _waveId: Wave1
+      _spawns:
+      - _zombieId: Standart
+        _zombiesCount: 3
+        _zombiesSpawnRadius: 1
+        _zombiesSpawnPosition: {x: 0, y: 0}
+  _zombiesData:
+    _zombies:
+    - _id: Standart
+      _skinId: Zombie
+      _movePolicyData: 0
+      _attackPolicyData: 0
 --- !u!1 &6212564064242479474
 GameObject:
   m_ObjectHideFlags: 0

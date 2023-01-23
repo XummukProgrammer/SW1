@@ -31,12 +31,29 @@ public class SW_Zombie
         _container = container;
     }
 
+    public void SetMovePolicy(SW_ZombieMovePolicy movePolicy)
+    {
+        _movePolicy = movePolicy;
+    }
+
+    public void SetAttackPolicy(SW_ZombieAttackPolicy attackPolicy)
+    {
+        _attackPolicy = attackPolicy;
+    }
+
     public void Init()
     {
-        _movePolicy = CreateMovePolicy();
-        _movePolicy.Init(this);
+        if (_movePolicy == null)
+        {
+            _movePolicy = CreateMovePolicy();
+        }
 
-        _attackPolicy = CreateAttackPolicy();
+        if (_attackPolicy == null)
+        {
+            _attackPolicy = CreateAttackPolicy();
+        }
+
+        _movePolicy.Init(this);
         _attackPolicy.Init(this);
 
         OnInit();
@@ -79,7 +96,7 @@ public class SW_Zombie
         OnCreate();
     }
 
-    public void SetPosition(int x, int y)
+    public void SetPosition(float x, float y)
     {
         _behaviour.transform.position = new Vector3(x, y, _behaviour.transform.position.z);
     }
@@ -152,6 +169,6 @@ public class SW_Zombie
     protected virtual void OnCreate() { }
     protected virtual void OnRemove() { }
 
-    protected virtual SW_ZombieMovePolicy CreateMovePolicy() { return new SW_ZombieMoveToAllBuildingPolicy(); }
-    protected virtual SW_ZombieAttackPolicy CreateAttackPolicy() { return new SW_ZombieAttackBuildingPolicy(); }
+    protected virtual SW_ZombieMovePolicy CreateMovePolicy() { return null; }
+    protected virtual SW_ZombieAttackPolicy CreateAttackPolicy() { return null; }
 }

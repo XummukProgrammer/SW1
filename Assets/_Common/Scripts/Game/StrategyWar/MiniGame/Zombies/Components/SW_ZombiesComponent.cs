@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class SW_ZombiesComponent : GameComponent<SW_MiniGame>
 {
+    [SerializeField] private SW_ZombieWavesData _waves;
+    [SerializeField] private SW_ZombiesData _zombiesData;
+
     private SW_ZombiesManager _zombies = new SW_ZombiesManager();
     private Transform _container;
 
@@ -11,11 +14,14 @@ public class SW_ZombiesComponent : GameComponent<SW_MiniGame>
     {
         base.OnInit();
 
-        _container = FindObjectOfType<SW_ZombiesContainerBehaviour>().transform;
+        _container = FindObjectOfType<SW_ZombiesContainerBehaviour>().transform; // TODO: use locator! and other places.
+        _zombies.SetMiniGame(MiniGame);
         _zombies.SetContainer(_container);
+        _zombies.SetWaves(_waves);
+        _zombies.SetZombiesData(_zombiesData);
 
         // Debug
-        CreateZombie<SW_Zombie>("Zombie", 0, 0);
+        _zombies.StartWave("Wave1");
     }
 
     protected override void OnDeinit()
@@ -28,28 +34,5 @@ public class SW_ZombiesComponent : GameComponent<SW_MiniGame>
     public override void OnUpdate()
     {
         _zombies.UpdateZombies();
-    }
-
-    public void CreateZombie<T>(string skinId, int x, int y) where T : SW_Zombie
-    {
-        var skin = MiniGame.SkinsComponent.GetZombieSkin(skinId);
-        if (skin == null)
-        {
-            Debug.Log("[SW] No found zombie skin: " + skinId);
-            return;
-        }
-
-        if (skin.Prefab == null)
-        {
-            Debug.Log("[SW] No found prefab for zombie skin: " + skinId);
-            return;
-        }
-
-        _zombies.CreateZombie<T>(MiniGame, skin.Prefab, x, y);
-    }
-
-    public void RemoveZombie(SW_Zombie zombie)
-    {
-        _zombies.RemoveZombie(zombie);
     }
 }
