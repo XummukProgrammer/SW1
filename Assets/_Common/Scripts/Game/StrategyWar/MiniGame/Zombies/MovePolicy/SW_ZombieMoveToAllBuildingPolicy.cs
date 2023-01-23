@@ -26,6 +26,8 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
                 }
             }
 
+            _targetCell.Removed += OnCellRemoved;
+
             return true;
         }
 
@@ -34,7 +36,7 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
 
     public override bool IsChangeObject() 
     { 
-        return false; 
+        return _targetCell == null; 
     }
 
     public override bool IsStop()
@@ -110,5 +112,11 @@ public class SW_ZombieMoveToAllBuildingPolicy : SW_ZombieMovePolicy
         var objectTopRight = GetTopRightPosition(objectPoint, objectScale);
         var objectDownLeft = GetDownLeftPosition(objectPoint, objectScale);
         return new Vector2(objectTopRight.x, objectDownLeft.y);
+    }
+
+    private void OnCellRemoved()
+    {
+        _targetCell.Removed -= OnCellRemoved;
+        _targetCell = null;
     }
 }

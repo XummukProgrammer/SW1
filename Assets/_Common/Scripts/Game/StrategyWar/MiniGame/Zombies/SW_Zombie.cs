@@ -76,8 +76,7 @@ public class SW_Zombie
             {
                 OnInitMoveObject();
             }
-
-            if (!_movePolicy.IsStop())
+            else if (!_movePolicy.IsStop())
             {
                 MoveToObject();
             }

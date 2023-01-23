@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Cell
 {
+    public event System.Action Removed;
+
     private int _x;
     private int _y;
     private int _layer;
@@ -35,6 +37,7 @@ public class Cell
 
     public void Remove()
     {
+        Removed?.Invoke();
         OnRemove();
 
         if (!_entryPoint.IsDisabled)
