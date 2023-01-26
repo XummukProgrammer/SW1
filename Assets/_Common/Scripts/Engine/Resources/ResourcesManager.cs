@@ -4,10 +4,10 @@ public class ResourcesManager
 {
     private List<Resource> _resources = new List<Resource>();
 
-    public Resource AddResource(MiniGame miniGame, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
+    public Resource AddResource(MiniGame miniGame, string targetObject, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
     {
         var resource = new Resource();
-        resource.Init(miniGame, name, startValue, minValue, maxValue, changePolicy);
+        resource.Init(miniGame, targetObject, name, startValue, minValue, maxValue, changePolicy);
         _resources.Add(resource);
         return resource;
     }
@@ -18,11 +18,11 @@ public class ResourcesManager
         _resources.Remove(resource);
     }
 
-    public Resource GetResourceByName(string name)
+    public Resource GetResourceByName(string targetObject, string name)
     {
         foreach (var resource in _resources)
         {
-            if (resource.Name == name)
+            if (resource.TargetObject == targetObject && resource.Name == name)
             {
                 return resource;
             }

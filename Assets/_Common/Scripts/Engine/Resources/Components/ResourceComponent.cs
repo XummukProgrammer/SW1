@@ -9,11 +9,13 @@ public class ResourceComponent<T> : GameComponent<T> where T : MiniGame
 
     private Resource _resource;
 
+    public Resource Resource => _resource;
+
     protected override void OnInit()
     {
         base.OnInit();
 
-        _resource = MiniGame.EntryPoint.ResourcesManager.AddResource(MiniGame, _name, _startValue, _minValue, _maxValue, GetChangePolicy());
+        _resource = MiniGame.EntryPoint.ResourcesManager.AddResource(MiniGame, GetTargetObject(), _name, _startValue, _minValue, _maxValue, GetChangePolicy());
     }
 
     protected override void OnDeinit()
@@ -28,4 +30,5 @@ public class ResourceComponent<T> : GameComponent<T> where T : MiniGame
     }
 
     protected virtual ResourceChangePolicy GetChangePolicy() { return null; }
+    protected virtual string GetTargetObject() { return ""; }
 }

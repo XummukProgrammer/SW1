@@ -8,17 +8,20 @@ public class Resource
     public System.Action<int, int> ValueTaked;
 
     private MiniGame _miniGame;
+    private string _targetObject;
     private string _name;
     private int _value;
     private int _minValue;
     private int _maxValue;
     private ResourceChangePolicy _changePolicy;
 
+    public string TargetObject => _targetObject;
     public string Name => _name;
 
-    public void Init(MiniGame miniGame, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
+    public void Init(MiniGame miniGame, string targetObject, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
     {
         _miniGame = miniGame;
+        _targetObject = targetObject;
         _name = name;
         _value = startValue;
         _minValue = minValue;

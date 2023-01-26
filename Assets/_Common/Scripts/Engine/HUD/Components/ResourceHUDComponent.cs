@@ -10,7 +10,7 @@ public class ResourceHUDComponent<T> : HUDComponent<HUD, T> where T : MiniGame
     {
         base.OnPostInit();
 
-        _resource = MiniGame.EntryPoint.ResourcesManager.GetResourceByName(_name);
+        _resource = MiniGame.EntryPoint.ResourcesManager.GetResourceByName(GetTargetObject(), _name);
         if (_resource != null)
         {
             _resource.ValueChanged += OnChangeValue;
@@ -36,4 +36,6 @@ public class ResourceHUDComponent<T> : HUDComponent<HUD, T> where T : MiniGame
             behaviour.SetValue(value);
         }
     }
+
+    protected virtual string GetTargetObject() { return ""; }
 }
