@@ -2,6 +2,8 @@ public class ResourceChangePolicy
 {
     private MiniGame _miniGame;
 
+    protected MiniGame MiniGame => _miniGame;
+
     public void Init(MiniGame miniGame)
     {
         _miniGame = miniGame;

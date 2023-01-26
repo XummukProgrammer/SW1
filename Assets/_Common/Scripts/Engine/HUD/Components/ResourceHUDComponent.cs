@@ -8,7 +8,7 @@ public class ResourceHUDComponent<T> : HUDComponent<HUD, T> where T : MiniGame
 
     protected override void OnPostInit()
     {
-        base.OnInit();
+        base.OnPostInit();
 
         _resource = MiniGame.EntryPoint.ResourcesManager.GetResourceByName(_name);
         if (_resource != null)

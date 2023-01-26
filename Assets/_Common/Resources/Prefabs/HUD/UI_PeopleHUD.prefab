@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 5958070792304175151}
   - component: {fileID: 7006809441166451074}
   - component: {fileID: 8109781384763979912}
-  - component: {fileID: 159525783307743415}
+  - component: {fileID: 2697682887684432601}
   m_Layer: 5
   m_Name: UI_PeopleHUD
   m_TagString: Untagged
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &159525783307743415
+--- !u!114 &2697682887684432601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,10 +250,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 152872683761114319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6159c562d9a5c40448da3bdc4417ea64, type: 3}
+  m_Script: {fileID: 11500000, guid: 568b88d113cb2de4cb40cac9d4ef1d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _people: {fileID: 7973230374416985615}
+  _value: {fileID: 7973230374416985615}
 --- !u!1 &2053351897454537955
 GameObject:
   m_ObjectHideFlags: 0
