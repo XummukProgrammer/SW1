@@ -27,12 +27,15 @@ public class SW_PeopleResourceChangePolicy : ResourceChangePolicy
 
     public override int GetGiveValue() 
     {
-        int baseAdd = 1000;
+        int value = _miniGame.PeopleResourceComponent.BaseAddPeopleOnHour;
 
-        var cells = _miniGame.FieldComponent.Field.GetCellsByType<SW_BuildingCell>();
-        baseAdd += 100 * cells.Count;
+        var cells = _miniGame.FieldComponent.Field.GetCellsByType<SW_PeopleBuildingCell>();
+        foreach (var cell in cells)
+        {
+            value += cell.GetAddPeople();
+        }
 
-        return baseAdd; 
+        return value; 
     }
 
     public override bool CanTakeValue() 

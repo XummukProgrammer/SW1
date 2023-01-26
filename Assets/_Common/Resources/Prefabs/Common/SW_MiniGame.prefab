@@ -92,6 +92,7 @@ MonoBehaviour:
   _startValue: 1000
   _minValue: 0
   _maxValue: 100000
+  _baseAddPeopleOnHour: 1000
 --- !u!1 &1049653446402830465
 GameObject:
   m_ObjectHideFlags: 0
