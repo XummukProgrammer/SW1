@@ -12,6 +12,7 @@ public class EntryPoint
     private EffectsManager _effectsManager = new EffectsManager();
     private TooltipManager _tooltipManager = new TooltipManager();
     private LocatorManager _locatorManager = new LocatorManager();
+    private ResourcesManager _resourcesManager = new ResourcesManager();
 
     private BaseMiniGameEntryBehaviour[] _miniGameEntryBehaviours;
     private string _startMiniGameId;
@@ -28,6 +29,7 @@ public class EntryPoint
     public EffectsManager EffectsManager => _effectsManager;
     public TooltipManager TooltipManager => _tooltipManager;
     public LocatorManager LocatorManager => _locatorManager;
+    public ResourcesManager ResourcesManager => _resourcesManager;
     public bool IsDisabled => _isDisabled;
 
     public void Init(Camera camera,
@@ -61,6 +63,7 @@ public class EntryPoint
         _miniGamesManager.Deinit();
         _soundsManager.Deinit();
         _effectsManager.Deinit();
+        _resourcesManager.Deinit();
     }
 
     public void Update()
@@ -71,6 +74,7 @@ public class EntryPoint
         _miniGamesManager.Update();
         _soundsManager.Update();
         _effectsManager.Update();
+        _resourcesManager.Update();
     }
 
     public Vector3 GetMousePosition()
