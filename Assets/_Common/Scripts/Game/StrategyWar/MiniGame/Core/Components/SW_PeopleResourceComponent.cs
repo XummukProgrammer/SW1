@@ -7,5 +7,5 @@ public class SW_PeopleResourceComponent : ResourceComponent<SW_MiniGame>
     public int BaseAddPeopleOnHour => _baseAddPeopleOnHour;
 
     protected override ResourceChangePolicy GetChangePolicy() { return new SW_PeopleResourceChangePolicy(); }
-    protected override string GetTargetObject() { return "Player"; }
+    protected override string GetSource() { return "Player"; }
 }

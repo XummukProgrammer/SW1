@@ -5,11 +5,11 @@ public class ResourceHolder
 
     public Resource Resource => _resource;
 
-    public void Create(MiniGame miniGame, string targetObject, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
+    public void Create(MiniGame miniGame, string source, string name, int startValue, int minValue, int maxValue, ResourceChangePolicy changePolicy)
     {
         _miniGame = miniGame;
 
-        _resource = _miniGame.EntryPoint.ResourcesManager.AddResource(miniGame, targetObject, name, startValue, minValue, maxValue, changePolicy);
+        _resource = _miniGame.EntryPoint.ResourcesManager.AddResource(miniGame, source, name, startValue, minValue, maxValue, changePolicy);
     }
 
     public void Remove()

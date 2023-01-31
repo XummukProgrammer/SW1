@@ -15,7 +15,7 @@ public class ResourceComponent<T> : GameComponent<T> where T : MiniGame
     {
         base.OnInit();
 
-        _resourceHolder.Create(MiniGame, GetTargetObject(), _name, _startValue, _minValue, _maxValue, GetChangePolicy());
+        _resourceHolder.Create(MiniGame, GetSource(), _name, _startValue, _minValue, _maxValue, GetChangePolicy());
     }
 
     protected override void OnDeinit()
@@ -26,5 +26,5 @@ public class ResourceComponent<T> : GameComponent<T> where T : MiniGame
     }
 
     protected virtual ResourceChangePolicy GetChangePolicy() { return null; }
-    protected virtual string GetTargetObject() { return ""; }
+    protected virtual string GetSource() { return ""; }
 }
