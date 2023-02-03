@@ -43,6 +43,7 @@ public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
             if (Target.TryGetComponent(out SW_ZombieBehaviour behaviour))
             {
                 _targetZombie = behaviour.Zombie;
+                _weapon.SetTarget(Target);
             }
             else
             {
