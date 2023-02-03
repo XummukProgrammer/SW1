@@ -3,6 +3,7 @@ using UnityEngine;
 public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
 {
     private SW_Weapon _weapon = new SW_Weapon();
+    private SW_Zombie _targetZombie;
 
     public override void OnInit()
     {
@@ -25,11 +26,32 @@ public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
     {
         base.Attack();
 
-        _weapon.TryShot(TurrelCell.VisionPolicy.GetObject());
+        _weapon.TryShot();
     }
 
     public override bool IsTargetRemove() 
     { 
         return false; 
+    }
+
+    protected override void OnChangeTarget()
+    {
+        base.OnChangeTarget();
+
+        if (Target)
+        {
+            if (Target.TryGetComponent(out SW_ZombieBehaviour behaviour))
+            {
+                _targetZombie = behaviour.Zombie;
+            }
+            else
+            {
+                _targetZombie = null;
+            }
+        }
+        else
+        {
+            _targetZombie = null;
+        }
     }
 }

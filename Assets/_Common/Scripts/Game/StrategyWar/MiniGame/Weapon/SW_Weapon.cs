@@ -6,6 +6,7 @@ public class SW_Weapon
     private Transform _attached;
     private float _reloadTime;
     private float _reloadMaxTime;
+    private Transform _target;
 
     private SW_WeaponBehaviour _behaviour;
 
@@ -21,7 +22,12 @@ public class SW_Weapon
         _behaviour = GameObject.Instantiate(_prefab, attached.transform);
     }
 
-    public void TryShot(Transform target)
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+    }
+
+    public void TryShot()
     {
         if (_behaviour == null || !IsReloaded)
         {
@@ -36,15 +42,25 @@ public class SW_Weapon
 
     public void Update(float dt)
     {
+        ReloadProcess(dt);
+        MoveToTargetProcess();
+    }
+
+    private void ReloadProcess(float dt)
+    {
         // TODO: use timer?
         if (!IsReloaded)
         {
             _reloadTime -= dt;
-            
+
             if (_reloadTime < 0)
             {
                 _reloadTime = 0;
             }
         }
+    }
+
+    private void MoveToTargetProcess()
+    {
     }
 }

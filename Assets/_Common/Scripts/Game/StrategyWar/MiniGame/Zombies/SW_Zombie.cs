@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SW_Zombie
 {
@@ -92,6 +93,7 @@ public class SW_Zombie
     public void Create()
     {
         _behaviour = GameObject.Instantiate(_prefab, _container);
+        _behaviour.Init(this);
         OnCreate();
     }
 

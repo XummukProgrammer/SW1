@@ -38,7 +38,7 @@ public class SW_TurrelBuildingCell : SW_BuildingCell
     {
         if (!_visionPolicy.IsObjectValid())
         {
-            _visionPolicy.FindObject();
+            OnFindObject();
         }
         else
         {
@@ -54,8 +54,14 @@ public class SW_TurrelBuildingCell : SW_BuildingCell
 
             if (_attackPolicy.IsTargetRemove())
             {
-                _visionPolicy.FindObject();
+                OnFindObject();
             }
         }
+    }
+
+    private void OnFindObject()
+    {
+        _visionPolicy.FindObject();
+        _attackPolicy.SetTarget(_visionPolicy.IsObjectValid() ? _visionPolicy.GetObject() : null);
     }
 }
