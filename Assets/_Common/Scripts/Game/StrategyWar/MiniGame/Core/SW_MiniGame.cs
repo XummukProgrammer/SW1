@@ -11,6 +11,7 @@ public class SW_MiniGame : MiniGame
     private SW_BuildingContextMenuComponent _buildingContextMenuComponent;
     private SW_ZombiesComponent _zombiesComponent;
     private SW_PeopleResourceComponent _peopleResourceComponent;
+    private SW_WeaponsDataComponent _weaponsDataComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
@@ -18,6 +19,7 @@ public class SW_MiniGame : MiniGame
     public SW_BuildingContextMenuComponent BuildingContextMenuComponent => GetBuildingContextMenuComponent();
     public SW_ZombiesComponent ZombiesComponent => GetZombiesComponent();
     public SW_PeopleResourceComponent PeopleResourceComponent => GetPeopleResourceComponent();
+    public SW_WeaponsDataComponent WeaponsDataComponent => GetWeaponsDataComponent();
 
     protected override void OnInit() 
     { 
@@ -179,6 +181,16 @@ public class SW_MiniGame : MiniGame
         }
 
         return _peopleResourceComponent;
+    }
+
+    private SW_WeaponsDataComponent GetWeaponsDataComponent()
+    {
+        if (_weaponsDataComponent == null)
+        {
+            _weaponsDataComponent = Components.GetComponentInChildren<SW_WeaponsDataComponent>();
+        }
+
+        return _weaponsDataComponent;
     }
 
     public void OnPlayerCellClicked(Cell cell)

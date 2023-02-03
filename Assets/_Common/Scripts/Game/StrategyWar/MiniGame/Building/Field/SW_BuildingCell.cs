@@ -8,7 +8,7 @@ public class SW_BuildingCell : Cell
 
     public override void OnStart()
     {
-        base.OnInit();
+        base.OnStart();
 
         var miniGame = EntryPoint.CurrentMiniGame;
         if (miniGame is SW_MiniGame)

@@ -7,8 +7,11 @@ public class SW_TurrelBuildingAttackPolicy
     public void Init(SW_TurrelBuildingCell turrelCell)
     {
         _turrelCell = turrelCell;
+
+        OnInit();
     }
 
+    public virtual void OnInit() { }
     public virtual bool CanAttack() { return false; }
     public virtual void Attack() { }
     public virtual bool IsTargetRemove() { return false; }

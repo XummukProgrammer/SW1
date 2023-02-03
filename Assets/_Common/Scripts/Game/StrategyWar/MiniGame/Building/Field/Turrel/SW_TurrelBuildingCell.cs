@@ -2,14 +2,26 @@ public class SW_TurrelBuildingCell : SW_BuildingCell
 {
     private SW_TurrelBuildingVisionPolicy _visionPolicy;
     private SW_TurrelBuildingAttackPolicy _attackPolicy;
+    private string _weaponName;
 
     public SW_TurrelBuildingVisionPolicy VisionPolicy => _visionPolicy;
     public SW_TurrelBuildingAttackPolicy AttackPolicy => _attackPolicy;
+    public string WeaponName => _weaponName;
+
+    public void SetWeaponName(string weaponName)
+    {
+        _weaponName = weaponName;
+    }
 
     public void SetPolicy(SW_TurrelBuildingVisionPolicy visionPolicy, SW_TurrelBuildingAttackPolicy attackPolicy)
     {
         _visionPolicy = visionPolicy;
         _attackPolicy = attackPolicy;
+    }
+
+    public override void OnStart()
+    {
+        base.OnStart();
 
         _visionPolicy.Init(this);
         _attackPolicy.Init(this);

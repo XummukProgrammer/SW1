@@ -34,7 +34,8 @@ public class SW_FieldComponent : GameComponent<SW_MiniGame>
             CreateCell<SW_PeopleBuildingCell>("Building", 6, 3, 0, true);
 
             var turrelCell = CreateCell<SW_TurrelBuildingCell>("Turrel", 5, 5, 0, true);
-            turrelCell.SetPolicy(new SW_TurrelBuildingZombieVisionPolicy(), new SW_TurrelBuildingAttackPolicy());
+            turrelCell.SetWeaponName("Test");
+            turrelCell.SetPolicy(new SW_TurrelBuildingZombieVisionPolicy(), new SW_TurrelBuildingWeaponAttackPolicy());
 
             Debug.Log("[SW] Success init field!");
         }
