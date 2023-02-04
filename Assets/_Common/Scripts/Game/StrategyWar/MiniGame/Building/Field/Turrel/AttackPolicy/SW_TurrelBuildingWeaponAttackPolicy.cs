@@ -3,17 +3,34 @@ using UnityEngine;
 public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
 {
     private SW_Weapon _weapon = new SW_Weapon();
-    private SW_Zombie _targetZombie;
+    private SW_Zombie _targetZombie; // TODO: delete?
 
     public override void OnInit()
     {
         base.OnInit();
 
         var weaponData = TurrelCell.MiniGame.WeaponsDataComponent.GetData(TurrelCell.WeaponName);
-        if (weaponData != null )
+        if (weaponData == null)
         {
-            _weapon.Init(weaponData.Prefab, TurrelCell.Behaviour.transform, weaponData.ReloadMaxTime);
+            Debug.Log("[SW] No found weapon: " + TurrelCell.WeaponName);
+            return;
         }
+
+        var bulletData = TurrelCell.MiniGame.BulletsDataComponent.GetData(weaponData.BulletName);
+        if (bulletData == null)
+        {
+            Debug.Log("[SW] No found bullet: " + weaponData.BulletName + " for weapon: " + TurrelCell.WeaponName);
+            return;
+        }
+
+        var bulletsLocator = TurrelCell.MiniGame.EntryPoint.LocatorManager.GetLocatorByName("Bullets");
+        if (bulletsLocator == null)
+        {
+            Debug.Log("[SW] No found locator: Bullets");
+            return;
+        }
+
+        _weapon.Init(TurrelCell.MiniGame.EntryPoint, weaponData.Prefab, TurrelCell.Behaviour.transform, weaponData.ReloadMaxTime, bulletData, bulletsLocator.Behaviour.transform);
     }
 
     public override bool CanAttack() 
@@ -26,7 +43,10 @@ public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
     {
         base.Attack();
 
-        _weapon.TryShot();
+        if (_weapon.TryShot())
+        {
+
+        }
     }
 
     public override bool IsTargetRemove() 

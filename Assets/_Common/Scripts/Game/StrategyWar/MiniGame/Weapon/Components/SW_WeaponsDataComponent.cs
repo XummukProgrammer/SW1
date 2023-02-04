@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SW_WeaponsDataComponent : MonoBehaviour
+public class SW_WeaponsDataComponent : GameComponent<SW_MiniGame>
 {
     [SerializeField] private SW_WeaponData[] _weaponsData;
 
