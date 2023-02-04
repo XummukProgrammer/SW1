@@ -6,12 +6,12 @@ public class SW_Bullet
     private SW_BulletBehaviour _prefab;
     private float _speed;
     private Vector2 _startPosition;
-    private Vector2 _direction;
+    private Vector3 _direction;
     private Transform _container;
 
     private SW_BulletBehaviour _behaviour;
 
-    public void Init(EntryPoint entryPoint, SW_BulletBehaviour prefab, float speed, Vector2 startPosition, Vector2 direction, Transform container)
+    public void Init(EntryPoint entryPoint, SW_BulletBehaviour prefab, float speed, Vector2 startPosition, Vector3 direction, Transform container)
     {
         _entryPoint = entryPoint;
         _prefab = prefab;
@@ -35,7 +35,8 @@ public class SW_Bullet
 
     public void Update(float dt)
     {
-
+        var position = _behaviour.transform.position;
+        _behaviour.transform.position = Vector3.MoveTowards(position, position + _direction, _speed);
     }
 
     private void Create()
