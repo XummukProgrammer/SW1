@@ -14,6 +14,7 @@ public class SW_MiniGame : MiniGame
     private SW_WeaponsDataComponent _weaponsDataComponent;
     private SW_BulletsDataComponent _bulletsDataComponent;
     private SW_BuildingWindowComponent _buildingWindowComponent;
+    private SW_BuildingHUDComponent _buildingHUDComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
@@ -24,6 +25,7 @@ public class SW_MiniGame : MiniGame
     public SW_WeaponsDataComponent WeaponsDataComponent => GetWeaponsDataComponent();
     public SW_BulletsDataComponent BulletsDataComponent => GetBulletsDataComponent();
     public SW_BuildingWindowComponent BuildingWindowComponent => GetBuildingWindowComponent();
+    public SW_BuildingHUDComponent BuildingHUDComponent => GetBuildingHUDComponent();
 
     protected override void OnInit() 
     { 
@@ -45,11 +47,6 @@ public class SW_MiniGame : MiniGame
     protected override void OnUpdate() 
     { 
         base.OnUpdate();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            GetBuildingWindowComponent().Controller.OpenByAction();
-        }
     }
 
     protected override void OnLoadResources() 
@@ -220,6 +217,16 @@ public class SW_MiniGame : MiniGame
         }
 
         return _buildingWindowComponent;
+    }
+
+    private SW_BuildingHUDComponent GetBuildingHUDComponent()
+    {
+        if (_buildingHUDComponent == null)
+        {
+            _buildingHUDComponent = Components.GetComponentInChildren<SW_BuildingHUDComponent>();
+        }
+
+        return _buildingHUDComponent;
     }
 
     public void OnPlayerCellClicked(Cell cell)
