@@ -21,6 +21,7 @@ public class SW_TurrelBuildingAttackPolicy
         OnChangeTarget();
     }
 
+    public virtual void OnUpdate() { }
     public virtual void OnInit() { }
     public virtual bool CanAttack() { return false; }
     public virtual void Attack() { }

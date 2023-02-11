@@ -395,7 +395,7 @@ MonoBehaviour:
   _bulletsData:
   - _name: Test
     _prefab: {fileID: 4014473785384436952, guid: a0dd0a99f13d9604d814be3f3ac47803, type: 3}
-    _speed: 0.05
+    _speed: 3
 --- !u!1 &6253573412044622442
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,10 @@ public class SW_TurrelBuildingZombieVisionPolicy : SW_TurrelBuildingVisionPolicy
         {
             _targetZombie = zombies[Random.Range(0, zombiesCount - 1)];
         }
+        else
+        {
+            _targetZombie = null;
+        }
     }
 
     public override Transform GetObject() 

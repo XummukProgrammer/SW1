@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SW_Bullet
 {
-    private EntryPoint _entryPoint;
+    private SW_MiniGame _miniGame;
+    private SW_TurrelBuildingCell _turrelCell;
     private SW_BulletBehaviour _prefab;
     private float _speed;
     private Vector2 _startPosition;
@@ -11,9 +12,10 @@ public class SW_Bullet
 
     private SW_BulletBehaviour _behaviour;
 
-    public void Init(EntryPoint entryPoint, SW_BulletBehaviour prefab, float speed, Vector2 startPosition, Vector3 direction, Transform container)
+    public void Init(SW_MiniGame miniGame, SW_TurrelBuildingCell turrelCell, SW_BulletBehaviour prefab, float speed, Vector2 startPosition, Vector3 direction, Transform container)
     {
-        _entryPoint = entryPoint;
+        _miniGame = miniGame;
+        _turrelCell = turrelCell;
         _prefab = prefab;
         _speed = speed;
         _startPosition = startPosition;
@@ -25,7 +27,7 @@ public class SW_Bullet
 
     public void Deinit()
     {
-        if (!_entryPoint.IsDisabled)
+        if (!_miniGame.EntryPoint.IsDisabled)
         {
             GameObject.Destroy(_behaviour.gameObject);
         }
@@ -36,7 +38,17 @@ public class SW_Bullet
     public void Update(float dt)
     {
         var position = _behaviour.transform.position;
-        _behaviour.transform.position = Vector3.MoveTowards(position, position + _direction, _speed);
+        _behaviour.transform.position = Vector3.MoveTowards(position, position + _direction, _speed * Time.deltaTime);
+
+        foreach (var zombie in _miniGame.ZombiesComponent.Zombies.Zombies)
+        {
+            if (IntersectsUtils.IsRectsTouched(_behaviour.transform.position, _behaviour.transform.localScale, zombie.Behaviour.transform.position, zombie.Behaviour.transform.localScale))
+            {
+                _miniGame.ZombiesComponent.Zombies.RemoveZombie(zombie);
+                _turrelCell.OnFindObject();
+                break;
+            }
+        }
     }
 
     private void Create()

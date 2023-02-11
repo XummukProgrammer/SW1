@@ -10,6 +10,8 @@ public class SW_ZombiesManager
     private SW_ZombiesData _zombiesData;
     private List<SW_Zombie> _zombies = new List<SW_Zombie>();
 
+    public List<SW_Zombie> Zombies => _zombies;
+
     public void SetMiniGame(SW_MiniGame miniGame)
     {
         _miniGame = miniGame;

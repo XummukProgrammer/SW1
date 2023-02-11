@@ -110,7 +110,7 @@ public class SW_Zombie
         {
             GameObject.Destroy(_behaviour.gameObject);
         }
-        
+
         _behaviour = null;
     }
 
@@ -142,7 +142,7 @@ public class SW_Zombie
         var targetObject = _movePolicy.GetObject();
         if (targetObject != null)
         {
-            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, targetObject.transform.position, 0.01f);
+            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, targetObject.transform.position, 3f * Time.deltaTime);
         }
     }
 

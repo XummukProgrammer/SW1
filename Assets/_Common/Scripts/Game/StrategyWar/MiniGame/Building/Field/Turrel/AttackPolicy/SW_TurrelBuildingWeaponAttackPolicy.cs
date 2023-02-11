@@ -5,6 +5,13 @@ public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
     private SW_Weapon _weapon = new SW_Weapon();
     private SW_Zombie _targetZombie; // TODO: delete?
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        _weapon.Update(Time.deltaTime);
+    }
+
     public override void OnInit()
     {
         base.OnInit();
@@ -30,12 +37,11 @@ public class SW_TurrelBuildingWeaponAttackPolicy : SW_TurrelBuildingAttackPolicy
             return;
         }
 
-        _weapon.Init(TurrelCell.MiniGame.EntryPoint, weaponData.Prefab, TurrelCell.Behaviour.transform, weaponData.ReloadMaxTime, bulletData, bulletsLocator.Behaviour.transform);
+        _weapon.Init(TurrelCell.MiniGame, TurrelCell, weaponData.Prefab, TurrelCell.Behaviour.transform, weaponData.ReloadMaxTime, bulletData, bulletsLocator.Behaviour.transform);
     }
 
     public override bool CanAttack() 
     {
-        _weapon.Update(Time.deltaTime);
         return _weapon.IsReloaded; 
     }
 

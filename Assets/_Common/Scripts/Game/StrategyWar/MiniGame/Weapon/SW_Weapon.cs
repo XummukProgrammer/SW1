@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SW_Weapon
 {
-    private EntryPoint _entryPoint;
+    private SW_MiniGame _miniGame;
+    private SW_TurrelBuildingCell _turrelCell;
     private SW_WeaponBehaviour _prefab;
     private Transform _attached;
     private float _reloadTime;
@@ -17,9 +18,10 @@ public class SW_Weapon
 
     public bool IsReloaded => _reloadTime <= 0;
 
-    public void Init(EntryPoint entryPoint, SW_WeaponBehaviour prefab, Transform attached, float reloadMaxTime, SW_BulletData bulletData, Transform bulletsContainer)
+    public void Init(SW_MiniGame miniGame, SW_TurrelBuildingCell turrelCell, SW_WeaponBehaviour prefab, Transform attached, float reloadMaxTime, SW_BulletData bulletData, Transform bulletsContainer)
     {
-        _entryPoint = entryPoint;
+        _miniGame = miniGame;
+        _turrelCell = turrelCell;
         _prefab = prefab;
         _attached = attached;
         _reloadMaxTime = reloadMaxTime;
@@ -37,7 +39,7 @@ public class SW_Weapon
 
     public bool TryShot()
     {
-        if (_behaviour == null || !IsReloaded)
+        if (_behaviour == null || !IsReloaded || _target == null)
         {
             return false;
         }
@@ -89,7 +91,7 @@ public class SW_Weapon
         var direction = targetPosition - _behaviour.transform.position;
 
         var bullet = new SW_Bullet();
-        bullet.Init(_entryPoint, _bulletData.Prefab, _bulletData.Speed, muzzlePosition.position, direction, _bulletsContainer);
+        bullet.Init(_miniGame, _turrelCell, _bulletData.Prefab, _bulletData.Speed, muzzlePosition.position, direction, _bulletsContainer);
         _bullets.Add(bullet);
     }
 

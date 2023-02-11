@@ -31,6 +31,8 @@ public class SW_TurrelBuildingCell : SW_BuildingCell
     {
         base.OnUpdate();
 
+        _attackPolicy.OnUpdate();
+
         VisionUpdate();
     }
 
@@ -59,7 +61,7 @@ public class SW_TurrelBuildingCell : SW_BuildingCell
         }
     }
 
-    private void OnFindObject()
+    public void OnFindObject()
     {
         _visionPolicy.FindObject();
         _attackPolicy.SetTarget(_visionPolicy.IsObjectValid() ? _visionPolicy.GetObject() : null);
