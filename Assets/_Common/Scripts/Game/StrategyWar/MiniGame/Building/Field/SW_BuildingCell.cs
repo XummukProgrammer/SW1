@@ -28,7 +28,7 @@ public class SW_BuildingCell : Cell
 
         _miniGame.HourChanged -= OnHourChanged;
 
-        if (this == _miniGame.BuildingContextMenuComponent.TargetCell)
+        if (!_miniGame.EntryPoint.IsDisabled && this == _miniGame.BuildingContextMenuComponent.TargetCell)
         {
             _miniGame.BuildingContextMenuComponent.Remove();
         }
