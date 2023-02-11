@@ -27,6 +27,11 @@ public class SW_BuildingCell : Cell
         base.OnRemove();
 
         _miniGame.HourChanged -= OnHourChanged;
+
+        if (this == _miniGame.BuildingContextMenuComponent.TargetCell)
+        {
+            _miniGame.BuildingContextMenuComponent.Remove();
+        }
     }
 
     public override void OnShowContextMenu()

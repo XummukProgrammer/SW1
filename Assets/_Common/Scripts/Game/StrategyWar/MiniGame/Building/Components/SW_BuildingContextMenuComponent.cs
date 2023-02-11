@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
@@ -6,6 +7,7 @@ public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
     private bool _isCreated = false;
 
     public bool IsCreated => _isCreated;
+    public Cell TargetCell => _targetCell;
 
     public void SetTargetCell(Cell targetCell) 
     { 
@@ -50,6 +52,9 @@ public class SW_BuildingContextMenuComponent : TooltipComponent<SW_MiniGame>
 
     private void OnCloseButtonClicked()
     {
-        Remove();
+        if (_isCreated)
+        {
+            Remove();
+        }
     }
 }
