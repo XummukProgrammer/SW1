@@ -7,7 +7,7 @@ public class LocatorBehaviour : MonoBehaviour
     private EntryPoint _entryPoint;
     private Locator _locator;
 
-    private void OnEnable()
+    private void Awake()
     {
         var launcher = FindObjectOfType<Launcher>();
         if (launcher != null)
@@ -21,7 +21,7 @@ public class LocatorBehaviour : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (_entryPoint != null)
         {

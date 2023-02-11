@@ -50,9 +50,6 @@ public class EntryPoint
         _soundsManager.Init(soundsContainer, baseAudioSource);
         _effectsManager.Init(this, worldEffectsContainer, canvasEffectsContainer);
         _tooltipManager.Init(this, tooltipContainer);
-
-        // TODO: Разделить игровую логику на Core и Meta!
-        StartMiniGame(_startMiniGameId);
     }
 
     public void Deinit()
@@ -108,5 +105,11 @@ public class EntryPoint
     public void OnDisabled()
     {
         _isDisabled = true;
+    }
+
+    public void StartMiniGame()
+    {
+        // TODO: Разделить игровую логику на Core и Meta!
+        StartMiniGame(_startMiniGameId);
     }
 }

@@ -18,6 +18,8 @@ public class Launcher : MonoBehaviour
 
     [SerializeField] private Transform _tooltipContainer;
 
+    [SerializeField] private Transform _startMiniGameMenu;
+
     private EntryPoint _entryPoint = new EntryPoint();
 
     public EntryPoint EntryPoint => _entryPoint;
@@ -41,5 +43,11 @@ public class Launcher : MonoBehaviour
     private void Update()
     {
         _entryPoint.Update();
+    }
+
+    public void OnStartMiniGame()
+    {
+        _startMiniGameMenu.gameObject.SetActive(false);
+        _entryPoint.StartMiniGame();
     }
 }
