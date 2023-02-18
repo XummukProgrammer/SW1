@@ -30,6 +30,6 @@ public class SW_BuildingSelectWindowItemController
     private void OnBought()
     {
         Debug.Log($"Bought {_data.Id}");
-        _miniGame.BuildingSelectWindowComponent.Controller.Hide();
+        _miniGame.BuildingSelectWindowComponent.Controller.Close();
     }
 }

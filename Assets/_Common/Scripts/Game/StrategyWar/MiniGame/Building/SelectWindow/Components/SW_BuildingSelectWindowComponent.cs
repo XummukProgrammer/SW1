@@ -4,9 +4,9 @@ public class SW_BuildingSelectWindowComponent : WindowComponent<SW_BuildingSelec
 {
     [SerializeField] private SW_BuildingItemData[] _items;
 
-    protected override void OnCreate()
+    protected override void OnCreated()
     {
-        base.OnCreate();
+        base.OnCreated();
 
         SW_BuildingSelectWindowBehaviour behaviour = null;
         if (!Controller.Behaviour.TryGetComponent(out behaviour))
@@ -20,5 +20,10 @@ public class SW_BuildingSelectWindowComponent : WindowComponent<SW_BuildingSelec
         {
             behaviour.AddItem(item);
         }
+    }
+
+    protected override void OnDestroyed()
+    {
+        base.OnDestroyed();
     }
 }
