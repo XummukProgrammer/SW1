@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class SW_BuildingWindowItemBehaviour : MonoBehaviour
 {
+    public event System.Action Bought;
+
     [SerializeField] private Image _image;
     [SerializeField] private TMPro.TMP_Text _price;
 
@@ -10,5 +12,10 @@ public class SW_BuildingWindowItemBehaviour : MonoBehaviour
     {
         _image.sprite = data.Sprite;
         _price.text = data.Price.ToString();
+    }
+
+    public void OnBought()
+    {
+        Bought?.Invoke();
     }
 }
