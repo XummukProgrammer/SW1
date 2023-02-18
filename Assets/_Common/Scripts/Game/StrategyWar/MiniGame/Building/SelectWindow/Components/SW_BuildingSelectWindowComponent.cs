@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SW_BuildingWindowComponent : WindowComponent<SW_BuildingWindowController, SW_MiniGame>
+public class SW_BuildingSelectWindowComponent : WindowComponent<SW_BuildingSelectWindowController, SW_MiniGame>
 {
     [SerializeField] private SW_BuildingItemData[] _items;
 
@@ -8,7 +8,7 @@ public class SW_BuildingWindowComponent : WindowComponent<SW_BuildingWindowContr
     {
         base.OnCreate();
 
-        SW_BuildingWindowBehaviour behaviour = null;
+        SW_BuildingSelectWindowBehaviour behaviour = null;
         if (!Controller.Behaviour.TryGetComponent(out behaviour))
         {
             return;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SW_BuildingWindowItemBehaviour : MonoBehaviour
+public class SW_BuildingSelectWindowItemBehaviour : MonoBehaviour
 {
     public event System.Action Bought;
 

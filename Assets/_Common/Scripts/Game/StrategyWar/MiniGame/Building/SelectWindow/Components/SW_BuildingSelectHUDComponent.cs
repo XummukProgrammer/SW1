@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class SW_BuildingHUDComponent : HUDComponent<HUD, SW_MiniGame>
+public class SW_BuildingSelectHUDComponent : HUDComponent<HUD, SW_MiniGame>
 {
     protected override void OnInit()
     {
         base.OnInit();
 
-        if (Controller.Behaviour.TryGetComponent(out SW_BuildingHUDBehaviour behaviour))
+        if (Controller.Behaviour.TryGetComponent(out SW_BuildingSelectHUDBehaviour behaviour))
         {
             behaviour.OpenBuildingWindowButtonClicked += OnBuildingWindowShow;
         }
@@ -16,7 +16,7 @@ public class SW_BuildingHUDComponent : HUDComponent<HUD, SW_MiniGame>
     {
         base.OnDeinit();
 
-        if (Controller.Behaviour.TryGetComponent(out SW_BuildingHUDBehaviour behaviour))
+        if (Controller.Behaviour.TryGetComponent(out SW_BuildingSelectHUDBehaviour behaviour))
         {
             behaviour.OpenBuildingWindowButtonClicked -= OnBuildingWindowShow;
         }

@@ -13,8 +13,8 @@ public class SW_MiniGame : MiniGame
     private SW_PeopleResourceComponent _peopleResourceComponent;
     private SW_WeaponsDataComponent _weaponsDataComponent;
     private SW_BulletsDataComponent _bulletsDataComponent;
-    private SW_BuildingWindowComponent _buildingWindowComponent;
-    private SW_BuildingHUDComponent _buildingHUDComponent;
+    private SW_BuildingSelectWindowComponent _buildingSelectWindowComponent;
+    private SW_BuildingSelectHUDComponent _buildingSelectHUDComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
@@ -24,8 +24,8 @@ public class SW_MiniGame : MiniGame
     public SW_PeopleResourceComponent PeopleResourceComponent => GetPeopleResourceComponent();
     public SW_WeaponsDataComponent WeaponsDataComponent => GetWeaponsDataComponent();
     public SW_BulletsDataComponent BulletsDataComponent => GetBulletsDataComponent();
-    public SW_BuildingWindowComponent BuildingWindowComponent => GetBuildingWindowComponent();
-    public SW_BuildingHUDComponent BuildingHUDComponent => GetBuildingHUDComponent();
+    public SW_BuildingSelectWindowComponent BuildingSelectWindowComponent => GetBuildingSelectWindowComponent();
+    public SW_BuildingSelectHUDComponent BuildingSelectHUDComponent => GetBuildingSelectHUDComponent();
 
     protected override void OnInit() 
     { 
@@ -209,24 +209,24 @@ public class SW_MiniGame : MiniGame
         return _bulletsDataComponent;
     }
 
-    private SW_BuildingWindowComponent GetBuildingWindowComponent()
+    private SW_BuildingSelectWindowComponent GetBuildingSelectWindowComponent()
     {
-        if (_buildingWindowComponent == null)
+        if (_buildingSelectWindowComponent == null)
         {
-            _buildingWindowComponent = Components.GetComponentInChildren<SW_BuildingWindowComponent>();
+            _buildingSelectWindowComponent = Components.GetComponentInChildren<SW_BuildingSelectWindowComponent>();
         }
 
-        return _buildingWindowComponent;
+        return _buildingSelectWindowComponent;
     }
 
-    private SW_BuildingHUDComponent GetBuildingHUDComponent()
+    private SW_BuildingSelectHUDComponent GetBuildingSelectHUDComponent()
     {
-        if (_buildingHUDComponent == null)
+        if (_buildingSelectHUDComponent == null)
         {
-            _buildingHUDComponent = Components.GetComponentInChildren<SW_BuildingHUDComponent>();
+            _buildingSelectHUDComponent = Components.GetComponentInChildren<SW_BuildingSelectHUDComponent>();
         }
 
-        return _buildingHUDComponent;
+        return _buildingSelectHUDComponent;
     }
 
     public void OnPlayerCellClicked(Cell cell)

@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 2960031132516221020}
   - component: {fileID: 738995057927192969}
   m_Layer: 0
-  m_Name: BuildingWindow
+  m_Name: BuildingSelectWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 2031927405806552794}
   - component: {fileID: 358806919629278460}
   m_Layer: 0
-  m_Name: BuildingHUD
+  m_Name: BuildingSelectHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

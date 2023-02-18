@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SW_BuildingWindowBehaviour : WindowBehaviour
+public class SW_BuildingSelectWindowBehaviour : WindowBehaviour
 {
     [SerializeField] private Transform _content;
-    [SerializeField] private SW_BuildingWindowItemBehaviour _itemPrefab;
+    [SerializeField] private SW_BuildingSelectWindowItemBehaviour _itemPrefab;
 
     private SW_MiniGame _miniGame;
-    private List<SW_BuildingWindowItemController> _controllers = new List<SW_BuildingWindowItemController>();
+    private List<SW_BuildingSelectWindowItemController> _controllers = new List<SW_BuildingSelectWindowItemController>();
 
     public void Init(SW_MiniGame miniGame)
     {
@@ -16,7 +16,7 @@ public class SW_BuildingWindowBehaviour : WindowBehaviour
 
     public void AddItem(SW_BuildingItemData data)
     {
-        var controller = new SW_BuildingWindowItemController();
+        var controller = new SW_BuildingSelectWindowItemController();
         controller.Init(_miniGame, _content, _itemPrefab, data);
         _controllers.Add(controller);
     }
