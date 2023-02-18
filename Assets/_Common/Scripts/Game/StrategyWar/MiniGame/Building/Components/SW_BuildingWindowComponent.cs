@@ -8,12 +8,17 @@ public class SW_BuildingWindowComponent : WindowComponent<SW_BuildingWindowContr
     {
         base.OnCreate();
 
+        SW_BuildingWindowBehaviour behaviour = null;
+        if (!Controller.Behaviour.TryGetComponent(out behaviour))
+        {
+            return;
+        }
+
+        behaviour.Init(MiniGame);
+
         foreach (var item in _items)
         {
-            if (Controller.Behaviour.TryGetComponent(out SW_BuildingWindowBehaviour behaviour))
-            {
-                behaviour.AddItem(item);
-            }
+            behaviour.AddItem(item);
         }
     }
 }

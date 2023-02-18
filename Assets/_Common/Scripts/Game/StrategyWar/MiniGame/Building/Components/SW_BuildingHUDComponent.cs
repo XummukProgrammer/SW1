@@ -24,6 +24,9 @@ public class SW_BuildingHUDComponent : HUDComponent<HUD, SW_MiniGame>
 
     private void OnBuildingWindowShow()
     {
-        MiniGame.BuildingWindowComponent.Controller.OpenByAction();
+        var action = new SW_BuildingItemAction();
+        action.InitActions(MiniGame);
+
+        MiniGame.EntryPoint.ActonsQueue.AddAction(action);
     }
 }

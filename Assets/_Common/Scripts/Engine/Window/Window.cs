@@ -67,10 +67,15 @@ public class Window : IController
 
     public void OpenByAction()
     {
+        EntryPoint.ActonsQueue.AddAction(GetOpenAction());
+    }
+
+    public WindowAction GetOpenAction()
+    {
         var action = new WindowAction();
         action.Open(this);
 
-        EntryPoint.ActonsQueue.AddAction(action);
+        return action;
     }
 
     protected virtual void OnInit() { }
