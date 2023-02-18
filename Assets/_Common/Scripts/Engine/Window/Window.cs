@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Window : IController
 {
+    public event System.Action Created;
+
     private EntryPoint _entryPoint;
     private WindowBehaviour _prefab;
     private Transform _container;
@@ -37,6 +39,7 @@ public class Window : IController
         _behaviour = GameObject.Instantiate(_prefab, _container);
         OnCreate();
         _behaviour.Init();
+        Created?.Invoke();
     }
 
     public void Destroy()

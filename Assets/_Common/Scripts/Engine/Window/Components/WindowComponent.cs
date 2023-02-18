@@ -16,6 +16,7 @@ public class WindowComponent<TController, TMiniGame> : GameComponent<TMiniGame>
         base.OnInit();
 
         _controller = CreateController(MiniGame.EntryPoint.WindowManager);
+        _controller.Created += OnCreate;
     }
 
     public void Show()
@@ -35,6 +36,7 @@ public class WindowComponent<TController, TMiniGame> : GameComponent<TMiniGame>
         return windowManager.CreateAndAddController<TController>(Prefab); 
     }
 
+    protected virtual void OnCreate() { }
     protected virtual void OnShow() { }
     protected virtual void OnHide() { }
 }

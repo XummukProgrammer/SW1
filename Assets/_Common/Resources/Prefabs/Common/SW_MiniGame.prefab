@@ -443,6 +443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 3628154951987338799, guid: cf265bae447bec043b17f35d745cffaa, type: 3}
+  _items:
+  - _id: People
+    _price: 1000
+    _sprite: {fileID: 21300000, guid: d5ce4664051bbf24294678f269e85c0c, type: 3}
 --- !u!1 &6253573412044622442
 GameObject:
   m_ObjectHideFlags: 0
