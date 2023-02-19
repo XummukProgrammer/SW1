@@ -15,7 +15,6 @@ public class SW_MiniGame : MiniGame
     private SW_BulletsDataComponent _bulletsDataComponent;
     private SW_BuildingSelectWindowComponent _buildingSelectWindowComponent;
     private SW_BuildingSelectHUDComponent _buildingSelectHUDComponent;
-    private SW_BuildingCoordinatesWindowComponent _buildingCoordinatesWindowComponent;
 
     public SW_FieldComponent FieldComponent => GetFieldComponent();
     public SW_SkinsComponent SkinsComponent => GetSkinsComponent();
@@ -27,7 +26,6 @@ public class SW_MiniGame : MiniGame
     public SW_BulletsDataComponent BulletsDataComponent => GetBulletsDataComponent();
     public SW_BuildingSelectWindowComponent BuildingSelectWindowComponent => GetBuildingSelectWindowComponent();
     public SW_BuildingSelectHUDComponent BuildingSelectHUDComponent => GetBuildingSelectHUDComponent();
-    public SW_BuildingCoordinatesWindowComponent BuildingCoordinatesWindowComponent => GetBuildingCoordinatesWindowComponent();
 
     protected override void OnInit() 
     { 
@@ -229,16 +227,6 @@ public class SW_MiniGame : MiniGame
         }
 
         return _buildingSelectHUDComponent;
-    }
-
-    private SW_BuildingCoordinatesWindowComponent GetBuildingCoordinatesWindowComponent()
-    {
-        if (_buildingCoordinatesWindowComponent == null)
-        {
-            _buildingCoordinatesWindowComponent = Components.GetComponentInChildren<SW_BuildingCoordinatesWindowComponent>();
-        }
-
-        return _buildingCoordinatesWindowComponent;
     }
 
     public void OnPlayerCellClicked(Cell cell)

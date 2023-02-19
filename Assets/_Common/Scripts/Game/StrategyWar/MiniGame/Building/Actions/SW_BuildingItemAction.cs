@@ -8,7 +8,6 @@ public class SW_BuildingItemAction : SequenceAction
 
         AddAction(GetHideBuildingSelectHUDAction());
         AddAction(_miniGame.BuildingSelectWindowComponent.Controller.GetOpenAction());
-        AddAction(_miniGame.BuildingCoordinatesWindowComponent.Controller.GetOpenAction());
         AddAction(GetShowBuildingSelectHUDAction());
     }
 
